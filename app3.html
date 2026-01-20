@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Alert Puzzle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .start-btn, .option-btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .start-btn:hover, .option-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .question {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .timer {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .timer-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            width: 100%;
+            transition: width 1s linear;
+        }
+        .score {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .end-screen {
+            display: none;
+        }
+        .end-screen h2 {
+            font-size: 2em;
+        }
+        .restart-btn {
+            background: linear-gradient(45deg, #48cae4, #023e8a);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .restart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Brain Alert Puzzle</h1>
+        <div id="start-screen">
+            <p>Test your knowledge and quick thinking!</p>
+            <button class="start-btn" onclick="startGame()">Start Puzzle</button>
+        </div>
+        <div id="game-screen" style="display: none;">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">
+                <div class="timer-bar" id="timer-bar"></div>
+            </div>
+            <div class="question" id="question"></div>
+            <div id="options"></div>
+        </div>
+        <div id="end-screen" class="end-screen">
+            <h2>Game Over!</h2>
+            <p>Your final score: <span id="final-score"></span></p>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: ["London", "Berlin", "Paris", "Madrid"],
+                answer: 2
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                answer: 1
+            },
+            {
+                question: "What is 15 + 27?",
+                options: ["40", "42", "44", "46"],
+                answer: 1
+            },
+            {
+                question: "Who wrote 'Romeo and Juliet'?",
+                options: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+                answer: 1
+            },
+            {
+                question: "What is the largest ocean on Earth?",
+                options: ["Atlantic", "Indian", "Arctic", "Pacific"],
+                answer: 3
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 10;
+
+        function startGame() {
+            document.getElementById('start-screen').style.display = 'none';
+            document.getElementById('game-screen').style.display = 'block';
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                endGame();
+                return;
+            }
+            const q = questions[currentQuestion];
+            document.getElementById('question').textContent = q.question;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+            startTimer();
+        }
+
+        function startTimer() {
+            timeLeft = 10;
+            const timerBar = document.getElementById('timer-bar');
+            timerBar.style.width = '100%';
+            timer = setInterval(() => {
+                timeLeft--;
+                timerBar.style.width = (timeLeft / 10) * 100 + '%';
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    checkAnswer(-1); // Time out
+                }
+            }, 1000);
+        }
+
+        function checkAnswer(selected) {
+            clearInterval(timer);
+            const q = questions[currentQuestion];
+            if (selected === q.answer) {
+                score += timeLeft * 10; // More points for faster answers
+                document.getElementById('score').textContent = score;
+            }
+            currentQuestion++;
+            setTimeout(loadQuestion, 1000);
+        }
+
+        function endGame() {
+            document.getElementById('game-screen').style.display = 'none';
+            document.getElementById('end-screen').style.display = 'block';
+            document.getElementById('final-score').textContent = score;
+        }
+
+        function restartGame() {
+            document.getElementById('end-screen').style.display = 'none';
+            startGame();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+  <style>
+    .header {
+      background-image: url(ss.png);
+       height: 600px;
+      width: 100%;
+      margin-bottom: 60px;
+    }
+ 
+
+    .head-div {
+      display: flex;
+      height: 150px;
+      padding-top: 30px;
+      
+    }
+   
+    .logo-div {
+      padding-left: 50px
+    }
+
+    .logo {
+      font-size: 24px;
+      color: #ffffff;
+      font-weight: 600;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      margin-top: -4px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #ffffff;
+      font-family: cursive;
+      text-decoration: none;
+
+    }
+
+    .btns-div {
+      display: flex;
+      padding-left: 260px;
+
+    }
+
+    .btn1 {
+      border: none;
+      color: rgba(255, 255, 255, 0.705);
+      background: none;
+
+    }
+
+    .btn {
+      border: none;
+      color: rgba(255, 255, 255, 0.705);
+      background: none;
+      padding-top: 1px;
+      margin-left: 15px;
+    }
+
+    .remain-btn {
+      border: none;
+      color: rgba(255, 255, 255, 0.705);
+      background: none;
+      margin-left: 15px;
+
+    }
+
+    .user-div {
+      margin-top: 60px;
+      margin-left: 400px;
+      color: white;
+      font-family: cursive;
+
+      font-weight: bolder;
+
+    }
+
+    .user-div2 {
+      font-weight: 900;
+      line-height: 1.6;
+    }
+
+    .colorlib-div {
+      display: flex;
+      margin-left: 500px;
+      line-height: 1.5px;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .color-anchor {
+      margin-left: 6px;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: bold;
+      line-height: 1.5px;
+      color: rgba(0, 128, 0, 0.573);
+    }
+
+    .progress {
+      overflow: visible;
+      margin-bottom: 26px;
+      height: 4px;
+    }
+
+    .progress .progress-bar {
+      background-color: #96bb7c;
+      position: relative;
+      border-radius: 4px;
+      overflow: visible;
+    }
+
+    .progress .progress-bar span {
+      background-color: #96bb7c;
+      position: absolute;
+      bottom: -20px;
+      font-size: 10px;
+      line-height: 10px;
+      padding: 2px 3px 2px 4px;
+      right: -1.4em;
+      border-radius: 2px;
+    }
+
+    .site-footer {
+      background-color: #f8f9fa;
+      padding: 80px 0 40px 0;
+      color: #888;
+      font-size: 15px;
+      line-height: 1.6;
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+
+    .footer-col h3 {
+      color: #000;
+      margin-bottom: 25px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #888;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: #9dbd7d;
+    }
+
+    /* Connect / Social Icons */
+    .connect-section {
+      margin-top: 30px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      background-color: #777;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #9dbd7d;
+    }
+
+
+    .copyright-bar {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: none;
+    }
+
+    .heart {
+      color: #e31b23;
+    }
+
+    .copyright-bar a {
+      color: #9dbd7d;
+      text-decoration: none;
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <header class="header ">
+  
+    <div class="head-div">
+      <div class="logo-div">
+        <a href="portfolio.html" class="d-block text-center float-left logo"> MS </a>
+
+      </div>
+
+      <div class="btns-div">
+        <div><button class="btn1"><a href="sample4.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705);">Home</a></button></div>
+        <div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <button class="remain-btn"> <a href="portfolio.html"
+              style="text-decoration: none; color:  rgba(255, 255, 255, 0.705);;">About</a></button>
+        </div>
+        <div>
+          <button class="remain-btn"><a href="sample3.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705); ">Portfolio</a></button>
+        </div>
+        <div>
+          <button class="remain-btn"><a href="sample3.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705);">Services</a></button>
+        </div>
+        <div>
+          <button class="remain-btn"><a href="sample4.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705); ">Resume</a></button>
+
+        </div>
+        <div>
+          <button class="remain-btn"><a href="sample3.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705); ">Blog</a></button>
+        </div>
+        <div>
+          <button class="remain-btn"><a href="sample4.html"
+              style="text-decoration: none;  color:  rgba(255, 255, 255, 0.705);">Contact</a></button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="user-div">
+      <h1 class="user-div2"> I'm Mahnoor Shabbir <br>
+        A Front-end Developer</h1>
+    </div>
+    <div class="colorlib-div">
+      <p> A new work from</p> <a class="color-anchor" href="https://colorlib.com/"> Colorlib </a>
+    </div>
+  </header>
+  <section style="width: 100%; height: 100%;">
+    <div style="display: flex; margin-bottom: 80px; ">
+      <div style="padding-top: 180px; padding-left: 70px;">
+        <img src="ss.png" style="height: 500px; width: 500px;">
+      </div>
+      <div style="display: block">
+        <div>
+          <h5 style="margin-top: 100px; margin-left: 65px; font-size: 40px; font-weight: 400; font-family: cursive;">My
+            Bio</h5>
+          <p style="margin-left: 70px; line-height: 28.6px; color: rgba(128, 128, 128, 0.648);">Far far away, behind the
+            word mountains, far from the <br>countries Vokalia and Consonantia, there live the blind <br> texts.
+            Separated they live in Bookmarksgrove right at the <br>coast of the Semantics, a large language ocean.
+          </p>
+
+          <p style="margin-left: 70px; line-height: 28.6px;  color: rgba(128, 128, 128, 0.648);">A small river named
+            Duden flows by their place <br> and supplies it with the necessary regelialia. It is a <br>paradisematic
+            country, in which roasted parts of <br> sentences fly into your mouth.</p>
+        </div>
+        <div style="margin-left: 70px;">
+
+          <div class="my-5">
+            <div class="skill">
+              <h3 style="font-weight: 400; font-size: large;">Design</h3>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <span>85%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <h3 style="font-weight: 400; font-size: large;">HTML5</h3>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <span>98%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <h3 style="font-weight: 400; font-size: large;">CSS3</h3>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <span>97%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <h3 style="font-weight: 400; font-size: large;">WordPress</h3>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <span>88%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <h3 style="font-weight: 400; font-size: large;">Bootstrap</h3>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0"
+                  aria-valuemax="100">
+                  <span>92%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p>
+              <a href="portfolio.html" style="background: #96bb7c;
+    border-color: #96bb7c; color: white; padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 30px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05rem;
+    text-decoration: none;
+"> Hire Me</a>
+              <a href="portfolio.html" style="background-color: #6c757d;
+    border-color: #6c757d; color: white ;padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 30px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05rem;
+    text-decoration: none;
+"> Download Cv</a>
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="width: 100%; height: 100%; margin-bottom: 70px;">
+
+    <h2
+      style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+      My Portfolio</h2>
+
+    <div style="text-align: center; margin-top: 50px; ">
+      <button style=" border: none;color: rgba(255, 255, 255, 0.705); background: none;margin-left: 15px;"> <a
+          href="sample4.html" style="text-decoration: none;  color: #6c757d;">All</a></button>
+      <button style=" border: none;color: rgba(255, 255, 255, 0.705); background: none;margin-left: 15px;"> <a
+          href="sample4.html" style="text-decoration: none;  color: #6c757d;"> Packaging</a></button>
+      <button style=" border: none;color: rgba(255, 255, 255, 0.705); background: none;margin-left: 15px;"><a
+          href="sample3.html" style="text-decoration: none;  color: #6c757d;">Mockup</a></button>
+      <button style=" border: none;color: rgba(255, 255, 255, 0.705); background: none;margin-left: 15px;"> <a
+          href="sample3.html" style="text-decoration: none;  color: #6c757d;">Typography</a></button>
+      <button style=" border: none;color: rgba(255, 255, 255, 0.705); background: none;margin-left: 15px;"> <a
+          href="sample3.html" style="text-decoration: none;  color: #6c757d;">Photography</a></button>
+    </div>
+    <div >
+      <div style="margin-left: 30px; margin-top: 50px;">
+        <img src="work_1.jpg.webp" style="height: 300px; width: 400px;">
+        <img src="work_2.jpg.webp" style="height: 300px; width: 400px;">
+        <img src="work_3.jpg.webp" style="height: 300px; width: 400px;">
+      </div>
+      <div style="margin-top: 10px ; margin-left: 30px;">
+        <img src="work_5.jpg.webp" style="height: 300px; width: 400px;">
+        <img src="work_6.jpg" style="height: 300px; width: 400px;">
+        <img src="house.jpg" style="height: 300px; width: 400px;">
+      </div>
+    </div>
+  </section>
+  <section style="height: 100%; width: 100%; margin-bottom: 70px;">
+    <h2
+      style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+      Services</h2>
+    <div style="display: flex; justify-content: space-evenly; margin-top: 50px;">
+      <div
+        style="border: 1px solid gray; padding: 30px; line-height: 28.6px; text-align: center;color: #6c757d; border-radius: 5px;">
+        <i class="fa-solid fa-desktop" style="font-size: 40px; color: #96bb7c; "></i>
+        <p style="color: black; font-weight: 500;">Development</p>
+        <p>Far far away, behind the word <br>mountains, far from the countries <br> Vokalia and Consonantia, there live
+          the <br>blind texts.</p>
+      </div>
+
+      <div
+        style="border: 1px solid gray; padding: 30px; line-height: 28.6px; text-align: center;color: #6c757d; border-radius: 5px;">
+        <i class="fa-solid fa-microscope" style="font-size: 40px; color: #96bb7c; "></i>
+        <p style="color: black; font-weight: 500;">Design</p>
+        <p>Far far away, behind the word <br>mountains, far from the countries <br> Vokalia and Consonantia, there live
+          the <br>blind texts.</p>
+      </div>
+
+      <div
+        style="border: 1px solid gray; padding: 30px; line-height: 28.6px; text-align: center;color: #6c757d; border-radius: 5px;">
+        <i class="fa-solid fa-basket-shopping" style="font-size: 40px; color: #96bb7c; "></i>
+        <p style="color: black; font-weight: 500;">eCommerce</p>
+        <p>Far far away, behind the word <br>mountains, far from the countries <br> Vokalia and Consonantia, there live
+          the <br>blind texts.</p>
+      </div>
+    </div>
+  </section>
+  <section style="height: 100%; width: 100%; margin-bottom: 70px;">
+    <h2
+      style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+      Resume</h2>
+    <div style="margin-top: 60px; display: flex; ">
+      <div>
+        <img src="ss.png" style="height: 540px; width: 400px; margin-left: 40px;">
+      </div>
+      <div>
+
+        <p style="color: black; font-size: 30px;  width: 800px; padding-left: 80px;">Work Experience</p>
+        <div style="margin-left: 80px;">
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Senior Front End Developer</h2>
+              <span style="font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 25px;
+  letter-spacing: 0.5px;
+  background-color: #f1f8e9;
+  color: #8dbd69;">FULLTIME</span>
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+                <span class="info-item">
+                  <i class="fas fa-building"></i> Facebook, Inc.
+                </span>
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-map-marker-alt"></i> San Francisco
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i> November 2019 - Present
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Front-end Engineer</h2>
+              <span style="font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 25px;
+  letter-spacing: 0.5px;
+  background-color: #f1f8e9;
+  color: #8dbd69;">PART TIME</span>
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+                <span class="info-item">
+                  <i class="fas fa-building"></i> Google, Inc.
+                </span>
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-map-marker-alt"></i> San Francisco
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i> March 2015 - November 2019
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Web Designer</h2>
+              <span style="font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 25px;
+  letter-spacing: 0.5px;
+  background-color: #f1f8e9;
+  color: #8dbd69;">PART TIME</span>
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+                <span class="info-item">
+                  <i class="fas fa-building"></i> Github, Inc.
+                </span>
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-map-marker-alt"></i> San Francisco
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i>January 2010 - March 2015
+              </div>
+            </div>
+          </div>
+
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Lead Front-end Engineer</h2>
+              <span style="font-size: 12px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 25px;
+  letter-spacing: 0.5px;
+  background-color: #f1f8e9;
+  color: #8dbd69;">PART TIME</span>
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+                <span class="info-item">
+                  <i class="fas fa-building"></i> Slack, Inc.
+                </span>
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-map-marker-alt"></i> San Francisco
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i>January 2010
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="color: black; font-size: 30px;  width: 800px; padding-left: 80px; margin-top: 60px;">Education</p>
+        <div style="margin-left: 80px;">
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Master in Software Engineering</h2>
+
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-calendar-alt"></i> Harvard University
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i>Columbia University
+              </div>
+            </div>
+          </div>
+          <div style="font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 600px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f2; margin-top: 15px; ">
+
+            <div style="display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:11px;">
+              <h2 style="font-size: 19px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;">Batchelor in Software Engineering</h2>
+
+            </div>
+
+            <div style="display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 16px;">
+              <div style="display: flex;
+  gap: 25px;">
+
+                <span style="margin-right: 8px;
+  opacity: 0.6;">
+                  <i class="fas fa-calendar-alt"></i> Columbia University
+                </span>
+              </div>
+              <div style="margin-right: 8px;
+  opacity: 0.6;">
+                <i class="far fa-calendar-alt"></i>March 2015 - November 2019
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="height: 100%;  background-color: #f8f9fa; width: 100%; margin-bottom: 70px; ">
+    <div style="padding-top: 30px;">
+      <h2
+        style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+        Happy Clients</h2>
+    </div>
+    <div style="margin-left: 80px; margin-top: 40px;">
+      <div style="display: flex;
+  gap: 40px;
+  max-width: 1000px;
+  padding: 20px;">
+        <div style="display: flex;
+  align-items: flex-start;
+  position: relative;">
+          <div style="flex-shrink: 0;
+  z-index: 2;">
+            <img src="https://i.pravatar.cc/100?u=jeremy" alt="Jeremy Winston" style="width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          </div>
+          <div style="background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-left: 20px;
+  position: relative;
+  line-height: 1.6;">
+            <p style="color: #777;
+  font-size: 1.05rem;
+  margin-top: 0;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+              the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+              language ocean.”</p>
+            <p style="font-style: italic;
+  color: #555;
+  margin-bottom: 0;">— Jeremy Winston, <span style="color: #a3c644; /* The green color from your image */
+  font-style: normal;">CEO XYZ Inc.</span></p>
+          </div>
+        </div>
+
+        <div style="display: flex;
+  align-items: flex-start;
+  position: relative;">
+          <div style="flex-shrink: 0;
+  z-index: 2;">
+            <img src="https://i.pravatar.cc/100?u=richard" alt="Richard Atkinson" style="width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          </div>
+          <div style="background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-left: 20px;
+  position: relative;
+  line-height: 1.6;
+  
+  ">
+            <p style="color: #777;
+  font-size: 1.05rem;
+  margin-top: 0;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+              the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+              language ocean.”</p>
+            <p style="font-style: italic;
+  color: #555;
+  margin-bottom: 0;">— Richard Atkinson, <span style="color: #a3c644; /* The green color from your image */
+  font-style: normal;">CEO XYZ Inc.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-left: 80px; margin-top: 40px;">
+      <div style="display: flex;
+  gap: 40px;
+  max-width: 1000px;
+  padding: 20px;">
+        <div style="display: flex;
+  align-items: flex-start;
+  position: relative;">
+          <div style="flex-shrink: 0;
+  z-index: 2;">
+            <img src="john.webp" alt="Jeremy Winston" style="width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          </div>
+          <div style="background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-left: 20px;
+  position: relative;
+  line-height: 1.6;">
+            <p style="color: #777;
+  font-size: 1.05rem;
+  margin-top: 0;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+              the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+              language ocean.”</p>
+            <p style="font-style: italic;
+  color: #555;
+  margin-bottom: 0;">— Jeremy Winston, <span style="color: #a3c644; /* The green color from your image */
+  font-style: normal;">CEO XYZ Inc.</span></p>
+          </div>
+        </div>
+
+        <div style="display: flex;
+  align-items: flex-start;
+  position: relative;">
+          <div style="flex-shrink: 0;
+  z-index: 2;">
+            <img src="william-arndt-m2pN5D7SfvU-unsplash.jpg" alt="Richard Atkinson" style="width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          </div>
+          <div style="background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-left: 20px;
+  position: relative;
+  line-height: 1.6;
+  
+  ">
+            <p style="color: #777;
+  font-size: 1.05rem;
+  margin-top: 0;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+              the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+              language ocean.”</p>
+            <p style="font-style: italic;
+  color: #555;
+  margin-bottom: 0;">— Richard Atkinson, <span style="color: #a3c644; /* The green color from your image */
+  font-style: normal;">CEO XYZ Inc.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="height: 100%; padding-top: 60px; width: 100%; margin-bottom: 70px;">
+    <h2
+      style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+      Read On Medium</h2>
+    <div>
+      <div style="max-width: 800px;
+  margin: 0 auto;">
+        <article style="border-bottom: 1px solid #eee; /* The thin horizontal line */
+  padding: 40px 0;">
+          <div style="display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;">
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">JUN 28, 2020</span>
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">2 MINS READ</span>
+          </div>
+          <h2 style="font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: color 0.2s ease;">Front-end Developer Demands today</h2>
+        </article>
+
+        <article style="border-bottom: 1px solid #eee; /* The thin horizontal line */
+  padding: 40px 0;">
+          <div style="display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;">
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">JUN 28, 2020</span>
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">2 MINS READ</span>
+          </div>
+          <h2 style="font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: color 0.2s ease;">I Used React JS</h2>
+        </article>
+
+        <article style="border-bottom: 1px solid #eee; /* The thin horizontal line */
+  padding: 40px 0;">
+          <div style="display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;">
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">JUN 28, 2020</span>
+            <span style="font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #ccc;
+  text-transform: uppercase;">2 MINS READ</span>
+          </div>
+          <h2 style="font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: color 0.2s ease;">Why Front-end Developer So Important</h2>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section style="height: 100%; width: 100%; margin-bottom: 70px;">
+    <h2
+      style="text-align: center !important; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; font-family: cursive;">
+      Contact Me</h2>
+    <div style="margin-left: 40px; padding-top: 50px; width: 1200px;">
+      <div style="display: flex;
+    max-width: 1000px;
+    width: 90%;
+    gap: 80px;">
+        <form style="flex: 2;">
+          <div style="display: flex;
+    gap: 20px;
+    margin-bottom: 30px;">
+            <div style="flex: 1;
+    display: flex;
+    flex-direction: column;">
+              <label>First name</label>
+              <input type="text" name="firstname">
+            </div>
+            <div style="flex: 1;
+    display: flex;
+    flex-direction: column;">
+              <label>Last name</label>
+              <input type="text" name="lastname">
+            </div>
+          </div>
+
+          <div style="flex: 1;
+    display: flex;
+    flex-direction: column; margin-bottom: 30px;">
+            <label>Email address</label>
+            <input type="email" name="email">
+          </div>
+
+          <div style="flex: 1;
+    display: flex;
+    flex-direction: column; margin-bottom: 30px;">
+            <label>Message</label>
+            <textarea name="message" rows="5"></textarea>
+          </div>
+
+          <button type="submit" style="background-color: #9dbd7d;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;">SEND MESSAGE</button>
+        </form>
+        <div style="margin-left: 70px;">
+          <div style="font-size: 20px;
+    margin-bottom: 25px;">
+            <p>Contact Info</p>
+            <ul>
+              <li style="font-size: 15px;"><i class="fas fa-map-marker-alt"></i> 43 Raymouth Rd. Baltemoer, London 3910
+              </li>
+              <li style="font-size: 15px; color: #8dbd69;"><i class="fas fa-phone"></i> +1(123)-456-7890</li>
+              <li style="font-size: 15px; color: #8dbd69;"><i class="fas fa-phone"></i> +1(123)-456-7890</li>
+              <li style="font-size: 15px; color: #8dbd69;"><i class="fas fa-envelope"></i> info@mydomain.com</li>
+              <li style="font-size: 15px; color: #8dbd69;"><i class="fas fa-globe"></i> https://Colorlib/</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>About Orbit.</h3>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+          texts.</p>
+        <div class="connect-section">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fas fa-basketball-ball"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navagation</h3>
+        <ul>
+          <li><a href="#">HTML5</a></li>
+          <li><a href="#">CSS3</a></li>
+          <li><a href="#">jQuery</a></li>
+          <li><a href="#">Bootstrap</a></li>
+          <li><a href="#">Javascript</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">eCommerce</a></li>
+          <li><a href="#">WordPress</a></li>
+          <li><a href="#">Frontend</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+        <p>+1(123)-456-7890</p>
+        <p>+1(123)-456-7890</p>
+        <p>info@mydomain.com</p>
+      </div>
+    </div>
+
+    <div class="copyright-bar">
+      <p>Copyright &copy;2026 All rights reserved | This template is made with <span class="heart">❤</span> by <a
+          href="#">Colorlib</a></p>
+    </div>
+  </footer>
+ 
+
+
+
+
+
+
+</body>
+
+</html>

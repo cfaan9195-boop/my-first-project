@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Awareness Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 650px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 25px;
+            pointer-events: none;
+        }
+
+        .dark-mode .quiz-container {
+            background: rgba(26, 26, 46, 0.98);
+            color: white;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .screen {
+            padding: 40px;
+            text-align: center;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Start Screen */
+        #start-screen h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-mode #start-screen h1 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #start-screen .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .dark-mode #start-screen .subtitle {
+            color: #ccc;
+        }
+
+        #start-screen p {
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .dark-mode #start-screen p {
+            color: #aaa;
+        }
+
+        #start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #start-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        #start-btn:hover::before {
+            left: 100%;
+        }
+
+        #start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        #start-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Quiz Screen */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .dark-mode .quiz-header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .dark-mode .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .question-number {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .question-number {
+            color: #ccc;
+        }
+
+        .timer, .score {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .score {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(81, 207, 102, 0.3);
+        }
+
+        .question-container h2 {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .dark-mode .question-container h2 {
+            color: white;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .option {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #e9ecef;
+            padding: 18px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .dark-mode .option {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            border-color: #495057;
+            color: white;
+        }
+
+        .dark-mode .option:hover {
+            background: linear-gradient(135deg, #495057 0%, #34495e 100%);
+            border-color: #667eea;
+        }
+
+        /* Result Screen */
+        #result-screen h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark-mode #result-screen h1 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #result-screen .score-display {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .dark-mode #result-screen .score-display {
+            color: white;
+        }
+
+        #result-screen p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .dark-mode #result-screen p {
+            color: #ccc;
+        }
+
+        .performance-message {
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .excellent {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .dark-mode .excellent {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.2) 0%, rgba(40, 167, 69, 0.1) 100%);
+            color: #d4edda;
+            border-color: rgba(40, 167, 69, 0.3);
+        }
+
+        .good {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .dark-mode .good {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 193, 7, 0.1) 100%);
+            color: #fff3cd;
+            border-color: rgba(255, 193, 7, 0.3);
+        }
+
+        .needs-improvement {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .dark-mode .needs-improvement {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.2) 0%, rgba(220, 53, 69, 0.1) 100%);
+            color: #f8d7da;
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+
+        #restart-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+            margin-top: 20px;
+        }
+
+        #restart-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(40, 167, 69, 0.5);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .dark-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .dark-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Animations */
+        .correct {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+            color: white !important;
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4) !important;
+        }
+
+        .incorrect {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%) !important;
+            color: white !important;
+            transform: scale(0.98);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4) !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .screen {
+                padding: 30px 20px;
+            }
+
+            #start-screen h1 {
+                font-size: 2.2rem;
+            }
+
+            .question-container h2 {
+                font-size: 1.4rem;
+            }
+
+            .options {
+                gap: 12px;
+            }
+
+            .option {
+                padding: 15px 20px;
+                font-size: 0.95rem;
+            }
+
+            .quiz-header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .timer, .score {
+                font-size: 1.1rem;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quiz-container {
+                margin: 10px;
+            }
+
+            .screen {
+                padding: 25px 15px;
+                min-height: 400px;
+            }
+
+            #start-screen h1 {
+                font-size: 1.9rem;
+            }
+
+            .question-container h2 {
+                font-size: 1.2rem;
+            }
+
+            .timer, .score {
+                font-size: 1rem;
+            }
+
+            .option {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <div class="quiz-container">
+        <div id="start-screen" class="screen">
+            <h1>🧠 Mental Health Quiz</h1>
+            <div class="subtitle">Test Your Knowledge & Awareness</div>
+            <p>Discover how much you know about mental health, wellness, and well-being. This quiz covers important topics to help you better understand mental health awareness.</p>
+            <button id="start-btn">Start Quiz</button>
+        </div>
+
+        <div id="quiz-screen" class="screen hidden">
+            <div class="quiz-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="question-number" id="question-number">Question 1 of 10</div>
+                <div class="timer">⏱️ <span id="time-left">30</span>s</div>
+                <div class="score">⭐ <span id="score">0</span></div>
+            </div>
+            <div class="question-container">
+                <h2 id="question">Question</h2>
+                <div class="options">
+                    <button class="option" data-option="A"></button>
+                    <button class="option" data-option="B"></button>
+                    <button class="option" data-option="C"></button>
+                    <button class="option" data-option="D"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h1>Quiz Complete!</h1>
+            <div class="score-display" id="final-score">0</div>
+            <p id="performance-text">Your performance shows great awareness!</p>
+            <div class="performance-message" id="performance-message"></div>
+            <button id="restart-btn">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz App JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const startScreen = document.getElementById('start-screen');
+            const quizScreen = document.getElementById('quiz-screen');
+            const resultScreen = document.getElementById('result-screen');
+            const startBtn = document.getElementById('start-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const questionEl = document.getElementById('question');
+            const questionNumberEl = document.getElementById('question-number');
+            const progressFillEl = document.getElementById('progress-fill');
+            const optionsEl = document.querySelectorAll('.option');
+            const timeLeftEl = document.getElementById('time-left');
+            const scoreEl = document.getElementById('score');
+            const finalScoreEl = document.getElementById('final-score');
+            const performanceTextEl = document.getElementById('performance-text');
+            const performanceMessageEl = document.getElementById('performance-message');
+
+            // Quiz State
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let timeLeft = 30;
+            let timer;
+            let isDarkMode = false;
+
+            // Mental Health Quiz Questions
+            const questions = [
+                {
+                    question: "What percentage of the global population will experience a mental health disorder at some point in their life?",
+                    options: ["10%", "25%", "50%", "75%"],
+                    correct: "B",
+                    explanation: "Approximately 25% of the global population will experience a mental health disorder at some point in their life."
+                },
+                {
+                    question: "Which of the following is NOT a common symptom of anxiety?",
+                    options: ["Excessive worry", "Sleep disturbances", "Increased appetite", "Muscle tension"],
+                    correct: "C",
+                    explanation: "Anxiety often causes decreased appetite, not increased appetite."
+                },
+                {
+                    question: "What does PTSD stand for?",
+                    options: ["Post-Traumatic Stress Disorder", "Personal Trauma Stress Disorder", "Post-Treatment Stress Disorder", "Psychological Trauma Stress Disorder"],
+                    correct: "A",
+                    explanation: "PTSD stands for Post-Traumatic Stress Disorder, a mental health condition triggered by experiencing or witnessing a terrifying event."
+                },
+                {
+                    question: "Which neurotransmitter is primarily associated with feelings of happiness and well-being?",
+                    options: ["Dopamine", "Serotonin", "Adrenaline", "Acetylcholine"],
+                    correct: "B",
+                    explanation: "Serotonin is often called the 'feel-good' neurotransmitter and is associated with mood regulation and happiness."
+                },
+                {
+                    question: "What is the most effective way to support someone experiencing a mental health crisis?",
+                    options: ["Give them advice immediately", "Listen without judgment and encourage professional help", "Try to 'fix' their problems", "Ignore it until they bring it up"],
+                    correct: "B",
+                    explanation: "Active listening and encouraging professional help is the most supportive approach during a mental health crisis."
+                },
+                {
+                    question: "Which of these is considered a protective factor against mental health issues?",
+                    options: ["Social isolation", "Strong social support network", "Chronic stress", "Poor sleep habits"],
+                    correct: "B",
+                    explanation: "A strong social support network is a key protective factor that can help prevent and manage mental health issues."
+                },
+                {
+                    question: "What does 'stigma' mean in the context of mental health?",
+                    options: ["A type of medication", "Negative attitudes and discrimination", "A mental health disorder", "A therapy technique"],
+                    correct: "B",
+                    explanation: "Stigma refers to negative attitudes, beliefs, and discrimination against people with mental health conditions."
+                },
+                {
+                    question: "Which age group has the highest rate of mental health disorders?",
+                    options: ["Children (5-12)", "Teenagers (13-19)", "Young adults (20-35)", "Adults (36-50)"],
+                    correct: "C",
+                    explanation: "Young adults aged 20-35 have the highest rates of mental health disorders, often due to life transitions and stress."
+                },
+                {
+                    question: "What is mindfulness?",
+                    options: ["A type of medication", "Being present and aware in the moment", "A sleep disorder", "A form of exercise"],
+                    correct: "B",
+                    explanation: "Mindfulness is the practice of being fully present and aware of the current moment without judgment."
+                },
+                {
+                    question: "Which of these activities is proven to improve mental health?",
+                    options: ["Excessive social media use", "Regular physical exercise", "Avoiding social interactions", "Staying up late regularly"],
+                    correct: "B",
+                    explanation: "Regular physical exercise has been shown to improve mood, reduce anxiety, and enhance overall mental well-being."
+                }
+            ];
+
+            // Initialize
+            function init() {
+                setupEventListeners();
+            }
+
+            // Setup event listeners
+            function setupEventListeners() {
+                startBtn.addEventListener('click', startQuiz);
+                restartBtn.addEventListener('click', restartQuiz);
+                document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+                optionsEl.forEach(option => {
+                    option.addEventListener('click', selectOption);
+                });
+            }
+
+            // Toggle dark mode
+            function toggleTheme() {
+                isDarkMode = !isDarkMode;
+                document.body.classList.toggle('dark-mode');
+                document.getElementById('themeToggle').textContent = isDarkMode ? '☀️' : '🌙';
+            }
+
+            // Start quiz
+            function startQuiz() {
+                currentQuestionIndex = 0;
+                score = 0;
+                timeLeft = 30;
+                scoreEl.textContent = score;
+                timeLeftEl.textContent = timeLeft;
+
+                showScreen(quizScreen);
+                loadQuestion();
+                startTimer();
+            }
+
+            // Show specific screen
+            function showScreen(screen) {
+                [startScreen, quizScreen, resultScreen].forEach(s => s.classList.add('hidden'));
+                screen.classList.remove('hidden');
+            }
+
+            // Load current question
+            function loadQuestion() {
+                const currentQuestion = questions[currentQuestionIndex];
+                questionEl.textContent = currentQuestion.question;
+                questionNumberEl.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+                // Update progress bar
+                const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+                progressFillEl.style.width = progress + '%';
+
+                optionsEl.forEach((option, index) => {
+                    option.textContent = currentQuestion.options[index];
+                    option.classList.remove('correct', 'incorrect');
+                    option.style.pointerEvents = 'auto';
+                });
+
+                // Reset timer for each question
+                timeLeft = 30;
+                timeLeftEl.textContent = timeLeft;
+            }
+
+            // Start timer
+            function startTimer() {
+                if (timer) clearInterval(timer);
+                timer = setInterval(() => {
+                    timeLeft--;
+                    timeLeftEl.textContent = timeLeft;
+
+                    // Visual feedback for low time
+                    if (timeLeft <= 10) {
+                        timeLeftEl.style.color = '#e74c3c';
+                        timeLeftEl.style.animation = 'pulse 0.5s infinite';
+                    }
+
+                    if (timeLeft <= 0) {
+                        // Auto-select first option if time runs out
+                        selectOption({ target: optionsEl[0] });
+                    }
+                }, 1000);
+            }
+
+            // Stop timer
+            function stopTimer() {
+                clearInterval(timer);
+            }
+
+            // Handle option selection
+            function selectOption(e) {
+                const selectedOption = e.target;
+                const selectedAnswer = selectedOption.dataset.option;
+                const correctAnswer = questions[currentQuestionIndex].correct;
+
+                stopTimer();
+
+                // Disable all options
+                optionsEl.forEach(option => {
+                    option.style.pointerEvents = 'none';
+                });
+
+                // Show correct/incorrect feedback
+                if (selectedAnswer === correctAnswer) {
+                    selectedOption.classList.add('correct');
+                    score += 10;
+                    scoreEl.textContent = score;
+                } else {
+                    selectedOption.classList.add('incorrect');
+                    // Show correct answer
+                    optionsEl.forEach(option => {
+                        if (option.dataset.option === correctAnswer) {
+                            option.classList.add('correct');
+                        }
+                    });
+                }
+
+                // Move to next question after delay
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        loadQuestion();
+                        startTimer();
+                    } else {
+                        endQuiz();
+                    }
+                }, 2000);
+            }
+
+            // End quiz
+            function endQuiz() {
+                stopTimer();
+                finalScoreEl.textContent = score;
+
+                // Performance evaluation
+                const percentage = (score / (questions.length * 10)) * 100;
+                let performanceClass = '';
+                let performanceText = '';
+
+                if (percentage >= 80) {
+                    performanceClass = 'excellent';
+                    performanceText = 'Outstanding! You have excellent mental health awareness.';
+                } else if (percentage >= 60) {
+                    performanceClass = 'good';
+                    performanceText = 'Good job! You have solid mental health knowledge.';
+                } else {
+                    performanceClass = 'needs-improvement';
+                    performanceText = 'Keep learning! Mental health awareness is important for everyone.';
+                }
+
+                performanceMessageEl.className = `performance-message ${performanceClass}`;
+                performanceMessageEl.textContent = performanceText;
+                performanceTextEl.textContent = `You scored ${score} out of ${questions.length * 10} points (${percentage.toFixed(1)}%)`;
+
+                showScreen(resultScreen);
+            }
+
+            // Restart quiz
+            function restartQuiz() {
+                stopTimer();
+                showScreen(startScreen);
+            }
+
+            // Add pulse animation for low time
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                    100% { transform: scale(1); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Initialize the app
+            init();
+        });
+    </script>
+</body>
+</html>

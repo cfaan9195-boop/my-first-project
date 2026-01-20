@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeLadies | Premium Jackets</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff5f8;
+            color: #333;
+        }
+        /* Navigation */
+        nav {
+            background-color: #ff4d94;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav h1 { color: white; margin: 0; font-size: 1.5rem; }
+        
+        nav ul { list-style: none; display: flex; margin: 0; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 77, 148, 0.7), rgba(255, 77, 148, 0.7)), 
+                        url('https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 20px; }
+
+        /* Product Grid */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #ff4d94;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-card h3 { margin: 15px 0 5px; color: #444; }
+        .product-card p { color: #ff4d94; font-weight: bold; font-size: 1.2rem; }
+
+        .btn {
+            background-color: #ff4d94;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover { background-color: #e6006e; }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>LuxeLadies</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" style="font-size: 1.2rem;">🛒</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h2>Style That Speaks</h2>
+        <p>Discover our New Winter Collection 2024</p>
+        <a href="#shop" class="btn">Shop the Look</a>
+    </header>
+
+    <div class="container" id="shop">
+        <h2 class="section-title">Featured Jackets</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80" alt="Leather Jacket">
+                <h3>Classic Biker Leather</h3>
+                <p>$120.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=500&q=80" alt="Denim Jacket">
+                <h3>Vintage Denim Bliss</h3>
+                <p>$85.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=500&q=80" alt="Puffer Jacket">
+                <h3>Rose Pink Puffer</h3>
+                <p>$150.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRjhZZT2PNsaBNB1kZCF8MKYU_53Dqlpe1RXhFKkyYCuCtxXxcs62aeYRddj2RO7qEyrGBvCA5bNlNclNUv5w66pExODEI0KRPV7nEQ5VpHLzQloA0 alt="Wool Coat">
+                <h3>Elegant Wool Wrap</h3>
+                <p>$199.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1629731614138-16c471f49646?auto=format&fit=crop&w=500&q=80" alt="Trench Coat">
+                <h3>City Trench Coat</h3>
+                <p>$175.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1615233500570-c08906969db2?auto=format&fit=crop&w=500&q=80" alt="Blazer">
+                <h3>Velvet Evening Blazer</h3>
+                <p>$95.00</p>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 LuxeLadies Fashion. All rights reserved.</p>
+        <p>Follow us on Instagram | Facebook | Pinterest</p>
+    </footer>
+
+</body>
+</html>
+</body>
+</html>

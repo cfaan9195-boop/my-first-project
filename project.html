@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Sky Nexus Header</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .custom-header {
+            background-color:white;
+            padding: 15px 40px;
+            color:black;
+            font-family: 'Segoe UI', sans-serif;
+
+
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #4ed9e7, #7e57c2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+        }
+
+        .menu-item {
+            color:black;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 15px;
+
+        }
+
+        .menu-item:hover {
+            color: #4ed9e7;
+        }
+
+        .btn-get-touch {
+            background: linear-gradient(90deg, #38c9d8, #4ed9e7);
+            border: none;
+            color: #010816;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 8px;
+        }
+
+        .icon-btn {
+            color: black;
+            font-size: 1.2rem;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+
+
+
+        .hero-section {
+
+            background: linear-gradient(135deg, #1a4d53 0%, #7e307e 50%, #4a1a4a 100%);
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero-section::before {
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+
+        }
+
+        h1 {
+            letter-spacing: -1px;
+        }
+
+        p.lead {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: white;
+        }
+
+
+        .btn-primary-custom {
+            background-color: #bc3a85;
+            border: none;
+            color:white;
+
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #a02d70;
+            color: white;
+
+        }
+
+        .btn-outline-custom {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline-custom:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            color: white;
+        }
+
+        .para1 {
+            color:rgba(0, 0, 0, 0.652);
+        }
+
+        .head1 {
+            font-size: 40px;
+        }
+
+
+        .scrolling-content {
+            position: relative;
+            z-index: 2;
+
+            background-color:white;
+            box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .service-card {
+            background:white;
+            border: 1px solid #1e293b;
+            padding: 2rem;
+            border-radius: 12px;
+            color:black;
+
+        }
+
+        .service-card:hover {
+
+            border-color: #00d2ff;
+        }
+
+        .icon-cyan {
+            color: #00d2ff;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+
+        .btn-pink {
+            background-color: #bc3a85;
+            color: white;
+            border: none;
+        }
+
+        .btn-outline-glass {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .about-section {
+            padding: 60px 0;
+            background-color:rgb(255, 255, 255);
+            color: black;
+        }
+
+
+        .img-container {
+            position: relative;
+            border-radius: 15px;
+
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            color: #a0a6b5;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .feature-item i {
+            color: #40d3dc;
+            font-size: 1.25rem;
+            margin-right: 15px;
+        }
+
+
+        .btn-custom {
+            background-color: #40d3dc;
+            color: #050a18;
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 5px;
+
+        }
+
+        .btn-custom:hover {
+            background-color: #35b8bf;
+
+        }
+
+        .feature-card {
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 40px 30px;
+            background: #fff;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        /* Subtle hover effect */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .icon-box {
+            font-size: 3.5rem;
+            color: var(--brand-teal);
+            margin-bottom: 20px;
+            color:  #4ed9e7;
+            text-align: center;
+        }
+
+        .feature-title {
+            color: var(--heading-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-text {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        /* Specific Colors for Icons based on Screenshot */
+        .bg-healthcare { background-color: rgba(0, 212, 255, 0.1); color: #00d4ff; }
+        .bg-finance { background-color: rgba(233, 30, 99, 0.1); color: #e91e63; }
+        .bg-education { background-color: rgba(156, 39, 176, 0.1); color: #9c27b0; }
+        .bg-retail { background-color: rgba(0, 188, 212, 0.1); color: #00bcd4; }
+        .bg-manufacturing { background-color: rgba(255, 152, 0, 0.1); color: #ff9800; }
+        .bg-technology { background-color: rgba(33, 150, 243, 0.1); color: #2196f3; }
+        .bg-government { background-color: rgba(103, 114, 148, 0.1); color: #677294; }
+        .bg-sustainability { background-color: rgba(76, 175, 80, 0.1); color: #4caf50; }
+
+        .innovation-center {
+            background-color: rgba(255, 255, 255, 0.98);
+            color: black;
+        }
+
+        .small-section {
+            background-color: rgba(255, 255, 255, 0.963);
+            padding-top: 120px;
+
+        }
+
+        .industry-card {
+            background-color:white;
+            border-color: black;
+            border: 1px solid;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            background-color: #0d162d;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 34px;
+            
+        }
+
+        .industry-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            color:black;
+        }
+
+
+
+        .btn-explore {
+            background-color: white;
+            color:black;
+            border: 1px solid black;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-explore:hover {
+            background-color: #ffffff;
+            color: #050a18;
+        }
+
+        .client-section {
+            background-color: white;
+            padding-top: 120px;
+        }
+
+        .testimonial-card {
+            background-color:white;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            max-width: 800px;
+            padding: 3rem;
+            color:black;
+            text-align: center;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: black;
+        }
+
+        .client-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .source-text {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #22d3ee 0%, #a855f7 50%, #7c3aed 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+
+        }
+
+        .btn-get-in-touch {
+            background-color: #d946ef;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .btn-quote {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+
+<body>
+    <header style="width: auto; " class=" fixed-top">
+        <div class="custom-header  d-flex align-items-center justify-content-between">
+
+            <div class="d-flex align-items-center">
+                <img src="icononly_transparent_nobuffer.png" alt="Logo" class="me-2 rounded"
+                    style="width: 50PX; height: 50PX;">
+                <h6 class="mt-2 logo-text">Sky Nexus</h6>
+            </div>
+
+            <div class="d-none d-lg-flex align-items-center">
+                <a href="#" class="menu-item">Home</a>
+                <div class="dropdown">
+                    <a href="#" class="menu-item">About Us <i class="bi bi-chevron-down small"></i></a>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="menu-item">Services <i class="bi bi-chevron-down small"></i></a>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="menu-item">Industries <i class="bi bi-chevron-down small"></i></a>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="menu-item">Blog <i class="bi bi-chevron-down small"></i></a>
+                </div>
+                <a href="#" class="menu-item">Contact</a>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <i class="bi bi-search icon-btn"></i>
+                <i class="bi bi-display icon-btn"></i>
+                <button class="btn btn-get-touch ms-4">Get in Touch</button>
+                <i class="bi bi-box-arrow-right icon-btn"></i>
+            </div>
+
+        </div>
+    </header>
+    <section style="width: auto;">
+
+
+        <section class="hero-section d-flex align-items-center">
+            <div class="container text-center text-white">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <h1 class="display-3 fw-bold mb-4">Your Trusted IT Partner</h1>
+
+                        <p class="lead mb-5 px-md-5">
+                            Welcome to Sky Nexus! Empowering Australian businesses through innovation and security, we
+                            are your trusted technology partner delivering end-to-end ICT solutions. From digital
+                            transformation and software development to business intelligence, data analytics, and
+                            cybersecurity, we help organisations harness data-driven insights to grow smarter, work
+                            safer, optimise operations, and achieve more - guided by innovation, intelligence, and
+                            integrity.
+                        </p>
+
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="#" class="btn btn-primary-custom btn-lg px-4 py-2">Get Started</a>
+                            <a href="#" class="btn btn-outline-custom btn-lg px-4 py-2">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class=" scrolling-content ">
+            <h2 class=" head1 text-center pt-5 text-dark">Our Services</h2>
+            <p class=" para1 text-center pt-3 text-dark">Our team of industry expert professionals delivers cutting-edge
+                solutions tailored to <br> meet the unique challenges of modern businesses across finance, healthcare,
+                retail, and <br>more.</p>
+            <div class="container pt-5">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card h-100">
+                            <i class="bi bi-shield-lock-fill icon-cyan"></i>
+                            <h3>Cybersecurity</h3>
+                            <p>End-to-end cybersecurity services including threat detection, data protection, and
+                                compliance.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card h-100">
+                            <i class="bi bi-graph-up-arrow icon-cyan"></i>
+                            <h3>Business Intelligence</h3>
+                            <p>BI platforms that enable companies to monitor market trends, analyze behavior, and stay
+                                competitive.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card h-100">
+                            <i class="bi bi-code-slash icon-cyan"></i>
+                            <h3>Software Development</h3>
+                            <p>Custom software solutions that enhance productivity, streamline operations, and provide
+                                secure applications.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card h-100">
+                            <i class="bi bi-database-fill icon-cyan"></i>
+                            <h3>Data Analytics</h3>
+                            <p>Advanced analytics tools leveraging AI and machine learning to provide actionable
+                                insights.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5 pb-5">
+                    <button class="btn btn-outline-secondary px-5 text-dark ">View All Services</button>
+                </div>
+            </div>
+        </section>
+        <section class="about-section">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="img-container">
+                            <img src="kalen-emsley-Bkci_8qcdvQ-unsplash.jpg" alt="Sydney Bridge with Digital Overlay">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 ps-lg-5">
+                        <h2 class="section-title text-dark ">About Sky Nexus</h2>
+
+                        <p class="section-description">
+                            Sky Nexus, headquartered in Melbourne, is your trusted one-stop ICT partner.
+                            Founded in 2024, we empower Australian businesses with innovative, secure,
+                            and intelligent technology solutions – from software development and cloud
+                            computing to IT consulting and cybersecurity. Guided by our values of Excellence,
+                            Innovation, and Integrity, we help organisations operate smarter, safer,
+                            and more efficiently in the digital age.
+                        </p>
+
+                        <p class="section-description">
+                            We're committed to delivering customized digital solutions that address the
+                            unique challenges of modern businesses across various industries
+                            including healthcare, finance, education, retail, and manufacturing.
+                        </p>
+
+                        <ul class="feature-list">
+
+                            <li class="feature-item text-dark">
+                                <i class="bi bi-check-circle"></i> Experienced team of IT professionals
+                            </li>
+                            <li class="feature-item text-dark">
+                                <i class="bi bi-check-circle"></i> AI and ML-powered solutions
+                            </li>
+                            <li class="feature-item  text-dark">
+                                <i class="bi bi-check-circle"></i> Tailored solutions for your business needs
+                            </li>
+                            <li class="feature-item text-dark">
+                                <i class="bi bi-check-circle"></i> Focus on security and reliability
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn btn-custom text-dark">Learn More About Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="innovation-center">
+            <h2 class=" head1 text-center pt-5 text-dark ">Innovation & Technology</h2>
+            <p class=" para1 text-center pt-3 ">At Sky Nexus, we’re redefining what’s possible through the power of
+                artificial <br>intelligence, machine learning, and smart automation. Our solutions integrate seamlessly
+                <br>across software development, cloud infrastructure, data analytics, and cybersecurity, <br> enabling
+                organisations to innovate faster, operate smarter, and stay secure in a <br>connected world. From
+                predictive analytics and AI-driven insights to next-generation <br> digital transformation and
+                intelligent system integration, we empower businesses to lead <br> with clarity, agility, and confidence
+                in the digital era.</p>
+           
+           <div class="container">
+    <div class="row g-4 justify-content-center pt-5 pb-5">
+        
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <div class="icon-box">
+                    <i class="bi bi-search"></i>
+                </div>
+                <h3 class="feature-title">AI & Machine Learning</h3>
+                <p class="feature-text">
+                    Advanced capabilities in predictive modeling, big data processing, and natural language processing.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <div class="icon-box">
+                    <i class="bi bi-database"></i>
+                </div>
+                <h3 class="feature-title">Real-Time Analytics</h3>
+                <p class="feature-text">
+                    Customizable dashboards presenting data and KPIs in real-time for informed decision-making.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card text-center">
+                <div class="icon-box">
+                    <i class="bi bi-lock"></i>
+                </div>
+                <h3 class="feature-title">Data Privacy</h3>
+                <p class="feature-text">
+                    Commitment to responsible data use and compliance with Australian data protection standards.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+        </section>
+        <section class="small-section">
+            <h2 class=" head1 text-center  text-dark">Industries We Serve</h2>
+            <p class=" para1 text-center pt-3 ">We proudly serve a diverse range of industries - from small businesses
+                and startups to <br> large enterprises, government agencies, and not-for-profit organizations. Our
+                tailored <br>approach ensures that every client receives personalized, efficient, and results-driven
+                <br> solutions aligned with their goals, resources, and compliance needs. Whether it’s <br> enhancing
+                operational efficiency for SMEs, strengthening cybersecurity for government <br>entities, streamlining
+                systems for NFPs, or driving digital transformation for enterprise <br>clients, we adapt our expertise
+                to each sector’s unique challenges - delivering <br> technology that empowers growth, innovation, and
+                long-term success.</p>
+            <div class="container text-center pt-5 pb-5">
+                <div class="row g-4">
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-healthcare">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                            <h5 class="industry-title">Healthcare</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-finance">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                            <h5 class="industry-title">Finance</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-education">
+                                <i class="bi bi-mortarboard"></i>
+                            </div>
+                            <h5 class="industry-title">Education</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-retail">
+                                <i class="bi bi-bag"></i>
+                            </div>
+                            <h5 class="industry-title">Retail</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-manufacturing">
+                                <i class="bi bi-hammer"></i>
+                            </div>
+                            <h5 class="industry-title">Manufacturing</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-technology">
+                                <i class="bi bi-cpu"></i>
+                            </div>
+                            <h5 class="industry-title">Technology</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-government">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <h5 class="industry-title">Government</h5>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="industry-card">
+                            <div class="icon-box bg-sustainability">
+                                <i class="bi bi-plug"></i>
+                            </div>
+                            <h5 class="industry-title">Sustainability</h5>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="btn-explore  btn-outline-secondary">Explore All Industries</button>
+            </div>
+        </section>
+        <section class="client-section">
+            <h2 class=" head1 text-center  text-dark">What Our Clients Say</h2>
+            <p class=" para1 text-center pt-3 ">With a strong commitment to excellence, integrity, and innovation, Sky
+                Nexus has <br> earned the trust of businesses, not-for-profit organisations, and government partners
+                <br>across Australia. Our clients consistently highlight our personalised approach, technical <br>
+                expertise, and dedication to delivering real results. From developing intelligent software <br>solutions
+                and secure IT infrastructures to driving full-scale digital transformation, our <br> team ensures every
+                project is executed with precision and transparency. Clients value <br>our ability to listen, adapt, and
+                provide scalable solutions that align with their vision <br>- helping them save time, reduce costs, and
+                enhance operational performance. At Sky <br> Nexus, client satisfaction is more than a goal - it’s a
+                promise. Each success story reflects <br> our unwavering commitment to building long-term partnerships
+                grounded in trust, <br> collaboration, and technological excellence.
+
+            </p>
+            <div class="container d-flex justify-content-center pt-5 pb-5 pl-5 pr-5">
+                <div class="testimonial-card shadow-lg">
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p class="quote-text">
+                        "I highly recommend Sky Nexus to anyone seeking a reliable and innovative partner. Their team
+                        truly deliver on their promises and go above and beyond to ensure client satisfaction."
+                    </p>
+
+                    <div class="attribution">
+                        <p class="client-name">Satisfied Client</p>
+                        <p class="source-text">Yellow Pages Review</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="cta-section ">
+            <div class="container">
+                <h2 class="cta-title">Ready to Transform Your Business with Data-Driven Innovation?</h2>
+                <p class="cta-subtitle">
+                    Contact us today to discuss how Sky Nexus can help your business thrive with our tailored IT
+                    solutions.
+                </p>
+                <div class="d-flex justify-content-center">
+                    <button class="btn-get-in-touch">Get in Touch</button>
+                    <button class="btn-quote">Request a Quote</button>
+                </div>
+            </div>
+        </section>
+
+
+</body>
+
+</html>

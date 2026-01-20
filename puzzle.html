@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Alert Puzzle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .screen {
+            padding: 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .screen.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .option.correct {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .option.incorrect {
+            background: #f44336;
+            border-color: #f44336;
+        }
+
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="screen active" id="start-screen">
+            <h1>Brain Alert Puzzle</h1>
+            <p>Test your knowledge and alertness with this timed trivia challenge!</p>
+            <button id="start-btn">Start Puzzle</button>
+        </div>
+
+        <div class="screen" id="quiz-screen">
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="timer" id="timer">10</div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
+
+        <div class="screen" id="result-screen">
+            <h1>Puzzle Complete!</h1>
+            <div class="score" id="final-score"></div>
+            <div class="result" id="result-text"></div>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startScreen = document.getElementById('start-screen');
+            const quizScreen = document.getElementById('quiz-screen');
+            const resultScreen = document.getElementById('result-screen');
+            const startBtn = document.getElementById('start-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const questionEl = document.getElementById('question');
+            const optionsEl = document.getElementById('options');
+            const timerEl = document.getElementById('timer');
+            const progressBar = document.getElementById('progress-bar');
+            const finalScoreEl = document.getElementById('final-score');
+            const resultTextEl = document.getElementById('result-text');
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let timeLeft = 10;
+            let timer;
+            let questions = [];
+
+            // Trivia questions with knowledge-based content
+            const questionBank = [
+                {
+                    question: "What is the capital of Australia?",
+                    options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+                    correct: 2
+                },
+                {
+                    question: "Which planet is known as the Red Planet?",
+                    options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                    correct: 1
+                },
+                {
+                    question: "What is the largest mammal in the world?",
+                    options: ["Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
+                    correct: 1
+                },
+                {
+                    question: "Who painted the Mona Lisa?",
+                    options: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+                    correct: 2
+                },
+                {
+                    question: "What is the chemical symbol for gold?",
+                    options: ["Go", "Gd", "Au", "Ag"],
+                    correct: 2
+                },
+                {
+                    question: "Which ocean is the largest?",
+                    options: ["Atlantic", "Indian", "Arctic", "Pacific"],
+                    correct: 3
+                },
+                {
+                    question: "What year did World War II end?",
+                    options: ["1944", "1945", "1946", "1947"],
+                    correct: 1
+                },
+                {
+                    question: "Which element has atomic number 1?",
+                    options: ["Helium", "Hydrogen", "Lithium", "Beryllium"],
+                    correct: 1
+                },
+                {
+                    question: "What is the hardest natural substance on Earth?",
+                    options: ["Gold", "Iron", "Diamond", "Quartz"],
+                    correct: 2
+                },
+                {
+                    question: "Who wrote 'Pride and Prejudice'?",
+                    options: ["Emily Brontë", "Jane Austen", "Charlotte Brontë", "Louisa May Alcott"],
+                    correct: 1
+                }
+            ];
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            function startQuiz() {
+                questions = shuffleArray([...questionBank]).slice(0, 5); // Select 5 random questions
+                currentQuestionIndex = 0;
+                score = 0;
+                showQuestion();
+                startScreen.classList.remove('active');
+                quizScreen.classList.add('active');
+            }
+
+            function showQuestion() {
+                const question = questions[currentQuestionIndex];
+                questionEl.textContent = question.question;
+                optionsEl.innerHTML = '';
+                question.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'option';
+                    button.textContent = option;
+                    button.addEventListener('click', () => selectOption(index));
+                    optionsEl.appendChild(button);
+                });
+                timeLeft = 10;
+                timerEl.textContent = timeLeft;
+                progressBar.style.width = `${((currentQuestionIndex) / questions.length) * 100}%`;
+                startTimer();
+            }
+
+            function startTimer() {
+                timer = setInterval(() => {
+                    timeLeft--;
+                    timerEl.textContent = timeLeft;
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        nextQuestion(false);
+                    }
+                }, 1000);
+            }
+
+            function selectOption(selectedIndex) {
+                clearInterval(timer);
+                const question = questions[currentQuestionIndex];
+                const options = document.querySelectorAll('.option');
+                options.forEach((option, index) => {
+                    if (index === question.correct) {
+                        option.classList.add('correct');
+                    } else if (index === selectedIndex && index !== question.correct) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                if (selectedIndex === question.correct) {
+                    score += timeLeft * 10; // Bonus for speed
+                }
+                setTimeout(() => nextQuestion(selectedIndex === question.correct), 1500);
+            }
+
+            function nextQuestion(correct) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }
+
+            function showResult() {
+                quizScreen.classList.remove('active');
+                resultScreen.classList.add('active');
+                finalScoreEl.textContent = `Your Score: ${score}`;
+                let message = '';
+                if (score >= 400) {
+                    message = "Excellent! Your knowledge and alertness are top-notch!";
+                } else if (score >= 300) {
+                    message = "Great job! You have good knowledge and quick thinking.";
+                } else if (score >= 200) {
+                    message = "Not bad! Keep practicing to improve your skills.";
+                } else {
+                    message = "Keep learning! Every expert was once a beginner.";
+                }
+                resultTextEl.textContent = message;
+            }
+
+            startBtn.addEventListener('click', startQuiz);
+            restartBtn.addEventListener('click', () => {
+                resultScreen.classList.remove('active');
+                startScreen.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

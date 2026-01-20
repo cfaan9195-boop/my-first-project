@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Quiz App</title>
+        <style>
+                :root{--bg:#f7f8fb;--card:#fff;--accent:#4caf50;--muted:#666}
+                body{font-family:Segoe UI,Arial,sans-serif;background:var(--bg);margin:0;padding:40px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+                .quiz-card{width:100%;max-width:720px;background:var(--card);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.08);overflow:hidden}
+                .quiz-header{padding:24px 28px;background:linear-gradient(90deg,var(--accent),#7bd76b);color:#fff}
+                .quiz-body{padding:28px}
+                .question{font-size:1.2rem;margin-bottom:16px;color:#222}
+                .choices{display:flex;flex-direction:column;gap:10px}
+                .choice{padding:12px 14px;border:1px solid #eee;border-radius:8px;cursor:pointer;background:#fafafa;color:#222;transition:all .15s}
+                .choice:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+                .choice.selected{border-color:var(--accent);background:#eaf7ea}
+                .controls{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+                .btn{background:var(--accent);color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600}
+                .btn:disabled{opacity:.6;cursor:not-allowed}
+                .progress{font-size:.95rem;color:var(--muted)}
+                .result{padding:20px;text-align:center}
+                .score{font-size:2rem;font-weight:700;color:var(--accent)}
+                .small{font-size:.9rem;color:var(--muted)}
+                @media (max-width:520px){body{padding:18px}.quiz-body{padding:18px}}
+        </style>
+</head>
+<body>
+
+<main class="quiz-card" role="main">
+        <header class="quiz-header">
+                <div style="display:flex;align-items:center;justify-content:space-between">
+                        <div>
+                                <div style="font-weight:700">Simple Quiz App</div>
+                                <div class="small">Test your knowledge — HTML/CSS/JS</div>
+                        </div>
+                        <div class="small" id="totalQs"></div>
+                </div>
+        </header>
+
+        <section class="quiz-body">
+                <div id="quizArea">
+                        <div class="question" id="question">Question text</div>
+                        <div class="choices" id="choices"></div>
+                        <div class="controls">
+                                <div class="progress" id="progress">Question 1 of 1</div>
+                                <div>
+                                        <button class="btn" id="nextBtn" disabled>Next</button>
+                                </div>
+                        </div>
+                </div>
+
+                <div id="resultArea" style="display:none">
+                        <div class="result">
+                                <div class="small">Your Score</div>
+                                <div class="score" id="score">0 / 0</div>
+                                <div style="margin-top:14px">
+                                        <button class="btn" id="restartBtn">Restart Quiz</button>
+                                </div>
+                        </div>
+                </div>
+        </section>
+</main>
+
+<script>
+// Simple question set — you can extend this array
+const questions = [
+    {q:'Which tag creates a paragraph in HTML?', choices:['<p>','<para>','<par>','<text>'], answer:0},
+    {q:'Which CSS property controls text color?', choices:['background-color','color','font-color','text-color'], answer:1},
+    {q:'Which method adds an event listener in JS?', choices:['on()','attachEvent()','addEventListener()','listen()'], answer:2},
+    {q:'What does CSS stand for?', choices:['Cascading Style Sheets','Computer Style Sheets','Creative Style Scripts','Cascading Simple Sheets'], answer:0},
+    {q:'Which HTML attribute sets an image source?', choices:['href','src','link','ref'], answer:1}
+];
+
+let current = 0;
+let selected = null;
+let score = 0;
+
+const questionEl = document.getElementById('question');
+const choicesEl = document.getElementById('choices');
+const progressEl = document.getElementById('progress');
+const totalQsEl = document.getElementById('totalQs');
+const nextBtn = document.getElementById('nextBtn');
+const resultArea = document.getElementById('resultArea');
+const quizArea = document.getElementById('quizArea');
+const scoreEl = document.getElementById('score');
+const restartBtn = document.getElementById('restartBtn');
+
+function renderQuestion(){
+    const item = questions[current];
+    questionEl.textContent = item.q;
+    choicesEl.innerHTML = '';
+    item.choices.forEach((c,i)=>{
+        const btn = document.createElement('button');
+        btn.type='button';
+        btn.className='choice';
+        btn.innerHTML = c;
+        btn.addEventListener('click', ()=> selectChoice(btn,i));
+        choicesEl.appendChild(btn);
+    });
+    progressEl.textContent = `Question ${current+1} of ${questions.length}`;
+    totalQsEl.textContent = `${questions.length} Qs`;
+    selected = null; nextBtn.disabled = true;
+}
+
+function selectChoice(el,index){
+    // clear previous
+    Array.from(choicesEl.children).forEach(ch=>ch.classList.remove('selected'));
+    el.classList.add('selected');
+    selected = index;
+    nextBtn.disabled = false;
+}
+
+nextBtn.addEventListener('click', ()=>{
+    if(selected === null) return;
+    if(selected === questions[current].answer) score++;
+    current++;
+    if(current >= questions.length){
+        showResult();
+    } else {
+        renderQuestion();
+    }
+});
+
+function showResult(){
+    quizArea.style.display = 'none';
+    resultArea.style.display = 'block';
+    scoreEl.textContent = `${score} / ${questions.length}`;
+}
+
+restartBtn.addEventListener('click', ()=>{
+    current = 0; score = 0; selected = null;
+    resultArea.style.display = 'none'; quizArea.style.display = 'block';
+    renderQuestion();
+});
+
+// initialize
+renderQuestion();
+</script>
+
+</body>
+</html>
